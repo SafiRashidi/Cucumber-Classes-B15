@@ -9,7 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/features",
                 glue = "StepDefinitions",
                 dryRun = false,
-                tags = "@testcase2") // only test case1 will be executed
+                tags = "@smoke2",
+                plugin = {"pretty"}
+)
 // dry run =true-> it will check which step of your feature file does not have glue code
 public class SmokeRunner {
 }
