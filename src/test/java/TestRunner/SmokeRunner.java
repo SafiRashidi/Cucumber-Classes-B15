@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                 glue = "StepDefinitions",
                 dryRun = false,
                 tags = "@testcase2",
-                plugin = {"pretty", "html:target/Cucumber.html", "json:target/Cucumber.json"}
+                plugin = {"pretty", "html:target/Cucumber.html", "json:target/Cucumber.json", "rerun:target/failed.txt" }
 )
 // dry run =true-> it will check which step of your feature file does not have glue code
 public class SmokeRunner {

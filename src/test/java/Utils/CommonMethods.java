@@ -1,6 +1,10 @@
 package Utils;
 
 import StepDefinitions.PageInitializer;
+import org.apache.commons.io.FileUtils;
+import org.checkerframework.checker.index.qual.PolyUpperBound;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +13,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 
 public class CommonMethods extends PageInitializer {
@@ -86,5 +94,30 @@ public class CommonMethods extends PageInitializer {
                 option.click();
             }
         }
+    }
+
+//    =========================SCREENSHOT===================================
+    public static byte[] takeScreenshot(String imageName) {
+
+        // This caste the webDriver instance 'driver' to TakeScreenshot Interface
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        // This capture the screenshot and stores it as byte array
+        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
+
+        //this capture the screenshot and store it as a file in the sourceFile variable
+        File sourcePath = ts.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(sourcePath, new File(Constants.SCREENSHOT_FILEPATH + imageName + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return picBytes;
+    }
+
+    public static String getTimeStamp(String pattern) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        return sdf.format(date);
     }
 }
