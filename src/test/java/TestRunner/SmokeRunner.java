@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/features",
                 glue = "StepDefinitions",
                 dryRun = false,
-                tags = "@testcase2",
+                tags = "@database",
                 plugin = {"pretty", "html:target/Cucumber.html", "json:target/Cucumber.json", "rerun:target/failed.txt" }
 )
 // dry run =true-> it will check which step of your feature file does not have glue code
