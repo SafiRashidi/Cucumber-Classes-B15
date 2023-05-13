@@ -35,8 +35,8 @@ we have added tag of the scenario in runner class
 
 scenario is to capture the employee id from UI
 and verify it with the DB
- for this, we have added scenario in feature file
- and added in step definitions
+for this, we have added scenario in feature file
+and added in step definitions
 
- then we are verifying firstname, middlename, lastname etc one by one
- because we cannot compare bunch of values  in one attempt
+then we are verifying firstname, middlename, lastname etc one by one
+because we cannot compare bunch of values  in one attempt
